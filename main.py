@@ -15,18 +15,15 @@ if passwordsFileName == "":
 else:
     passwordsFile = open(f"{passwordsFileName}.txt", "a")
 
-for r in range(howManyPasswords):
+def generatePassword():
     password = ""
-    while len(password) != 14:
-        for i in range(len(characters)):
-            randomChar = random.randint(1, len(characters))
+    for i in range(14):
+        password = password + random.choice(characters)
+    return password
 
-            if i == randomChar:
-                password = password + characters[i]
-                
-
-    print(password)
-    passwordsFile.write(f'{password}\n')
+for i in range(howManyPasswords):
+    print(generatePassword())
+    passwordsFile.write(f'{generatePassword()}\n')
 
 
 passwordsFile.close()
