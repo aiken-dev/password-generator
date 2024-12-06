@@ -20,7 +20,7 @@ else:
 
 def generatePassword():
     password = ""
-    while any(ele in password for ele in letters) == False or any(ele in password for ele in digits) == False or any(ele in password for ele in punctuation) == False:
+    while any(ele in password for ele in letters) == False and any(ele in password for ele in digits) == False and any(ele in password for ele in punctuation) == False:
         for i in range(14):
             password = password + random.choice(characters)
 
