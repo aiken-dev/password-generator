@@ -1,4 +1,4 @@
-import django
+
 import string  
 import random
 letters = list(string.ascii_letters)
@@ -8,8 +8,11 @@ punctuation = ["!", "@", "#", "$", "%", "^", "&", "*"]
 characters = letters + digits + punctuation
 
 
+
 howManyPasswords = int(input("Enter how many passwords to generate?: "))
 passwordsFileName = input("Name the file to output passwords (default: passwords.txt): ")
+
+
 if passwordsFileName == "":
     passwordsFile = passwordsFile = open("passwords.txt", "a")
 else:
@@ -17,8 +20,12 @@ else:
 
 def generatePassword():
     password = ""
-    for i in range(14):
-        password = password + random.choice(characters)
+    while any(ele in password for ele in letters) == False or any(ele in password for ele in digits) == False or any(ele in password for ele in punctuation) == False:
+        for i in range(14):
+            password = password + random.choice(characters)
+
+    
+        
     return password
 
 for i in range(howManyPasswords):
